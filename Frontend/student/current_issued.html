@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Library Management System</title>
+    <style>
+        /* Basic Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        /* Body Styling */
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            background-color: #f4f4f4;
+        }
+
+        /* Header Styling */
+        .header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background-color: #fff;
+            padding: 10px 20px;
+            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .header h1 {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #333;
+        }
+
+        /* Profile Icon Styling */
+        .profile-icon {
+            width: 60px;
+            height: 60px;
+            background-image: url('https://www.shareicon.net/data/128x128/2017/06/22/887604_user_512x512.png');
+            background-size: cover;
+            background-position: center;
+            border: 0px solid #ccc;
+        }
+
+        /* Container Styling */
+        .container {
+            display: flex;
+            flex: 1;
+        }
+
+        /* Sidebar Styling */
+        .sidebar {
+            width: 280px;
+            background-color: #333;
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+            padding: 20px;
+        }
+
+        .sidebar a {
+            display: flex;
+            align-items: center;
+            color: #fff;
+            text-decoration: none;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+
+        .sidebar a:hover {
+            background-color: #444;
+        }
+
+        .sidebar a span {
+            margin-right: 10px;
+            font-size: 24px;
+        }
+
+        /* Content Area Styling */
+        .content {
+            flex: 1;
+            padding: 20px;
+        }
+
+        /* Centered Search Bar Styling */
+        .search-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .search-container label {
+            margin-right: 10px;
+            font-weight: bold;
+        }
+
+        .search-container input[type="text"] {
+            padding: 10px;
+            width: 400px; /* Increased width */
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+
+        .search-container button {
+            padding: 10px 15px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-left: 5px;
+        }
+
+        .search-container button:hover {
+            background-color: #0056b3;
+        }
+
+        /* Scrollable Table Container */
+        .table-container {
+            max-height: 300px; /* Set max height for scrollable area */
+            overflow-y: auto; /* Enable vertical scrolling */
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Table Styling */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #2c3e50;
+            color: #fff;
+            position: sticky;
+            top: 0; /* Keeps the header row visible while scrolling */
+            z-index: 1;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        tr:nth-child(odd) {
+            background-color: #f1f1f1;
+        }
+
+        /* Button Styling */
+        .action-buttons {
+            display: flex;
+            gap: 10px;
+        }
+
+        .btn-renew {
+            background-color: #17a2b8;
+            color: #fff;
+            padding: 8px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .btn-return {
+            background-color: #28a745;
+            color: #fff;
+            padding: 8px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .btn-renew:hover {
+            background-color: #138496;
+        }
+
+        .btn-return:hover {
+            background-color: #218838;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <div class="header">
+        <h1>Library Management System</h1>
+        <div class="profile-icon"></div>
+    </div>
+
+    <!-- Main Content Area -->
+    <div class="container">
+        
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <a href="#"><span>🏠</span>Home</a>
+            <a href="#"><span>✉️</span>Messages</a>
+            <a href="#"><span>📚</span>All Books</a>
+            <a href="#"><span>👍</span>Recommend Books</a>
+            <a href="#"><span>📖</span>Currently Issued Books</a>
+            <a href="#"><span>➡️</span>Logout</a>
+        </div>
+
+        <!-- Content Area -->
+        <div class="content">
+            <!-- Centered Search Bar -->
+            <div class="search-container">
+                <label for="searchInput">Search:</label>
+                <input type="text" id="searchInput" placeholder="Enter Book Name/Book Id">
+                <button type="button">Search</button>
+            </div>
+
+            <!-- Scrollable Table Container -->
+            <div class="table-container">
+                <table id="booksTable">
+                    <thead>
+                        <tr>
+                            <th>Book ID</th>
+                            <th>Book Name</th>
+                            <th>Issue Date</th>
+                            <th>Due Date</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Dynamic content will be inserted here by JavaScript -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <script src="../sidebarNavigation.js"></script>
+    <script src="../currentIssued.js"></script>
+</body>
+</html>

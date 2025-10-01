@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Library Management System</title>
+    <style>
+        /* Basic Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        /* Body Styling */
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            background-color: #f4f4f4;
+        }
+
+        /* Header Styling */
+        .header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background-color: #fff;
+            padding: 10px 20px;
+            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .header h1 {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #333;
+        }
+
+        /* Profile Icon Styling */
+        .profile-icon {
+            width: 60px;
+            height: 60px;
+            background-image: url('https://www.shareicon.net/data/128x128/2017/06/22/887604_user_512x512.png'); /* Add your image path here */
+            background-size: cover;
+            background-position: center;
+            border: 0px solid #ccc;
+        }
+
+        /* Container Styling */
+        .container {
+            display: flex;
+            flex: 1;
+        }
+
+        /* Sidebar Styling */
+        .sidebar {
+            width: 280px;
+            background-color: #333;
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+            padding: 20px;
+        }
+
+        .sidebar a {
+            display: flex;
+            align-items: center;
+            color: #fff;
+            text-decoration: none;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+
+        .sidebar a:hover {
+            background-color: #444;
+        }
+
+        .sidebar a span {
+            margin-right: 10px;
+            font-size: 24px;
+        }
+
+        /* Content Area Styling */
+        .main-content {
+            flex: 1;
+            padding: 20px;
+        }
+
+        /* Table Styling */
+        .recommend-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            background-color: #fff;
+            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+            overflow: hidden;
+        }
+
+        .recommend-table th, .recommend-table td {
+            padding: 12px;
+            text-align: left;
+            border: 1px solid #ddd;
+        }
+
+        .recommend-table th {
+            background-color: #2c3e50;
+            color: #fff;
+        }
+
+        .recommend-table td {
+            background-color: #f9f9f9;
+        }
+
+        .submit-button-container {
+            text-align: right;
+            margin-top: 20px;
+        }
+
+        .submit-button {
+            padding: 10px 20px;
+            background-color: #333;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .submit-button:hover {
+            background-color: #555;
+        }
+
+        /* Input Styling */
+        input[type="text"] {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+
+        /* Message box styling */
+        .recommendation-message {
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 4px;
+            text-align: center;
+            font-weight: bold;
+            font-size: 1rem;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.5s, transform 0.5s ease-out;
+            display: none; /* Initially hidden */
+        }
+
+        .recommendation-message.show {
+            display: block;  /* Make it visible */
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .recommendation-message.success {
+            background-color: #4CAF50; /* Green for success */
+            color: white;
+        }
+
+        .recommendation-message.error {
+            background-color: #f44336; /* Red for error */
+            color: white;
+        }
+
+        /* Optional: Style for the submit button hover effect */
+        .submit-button:hover {
+            background-color: #555;
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <div class="header">
+        <h1>Library Management System</h1>
+        <div class="profile-icon"></div>
+    </div>
+
+    <!-- Main Content Area -->
+    <div class="container">
+        
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <a href="#"><span>🏠</span>Home</a>
+            <a href="#"><span>✉️</span>Messages</a>
+            <a href="#"><span>📚</span>All Books</a>
+            <a href="#"><span>👍</span>Recommend Books</a>
+            <a href="#"><span>📖</span>Currently Issued Books</a>
+            <a href="#"><span>➡️</span>Logout</a>
+        </div>
+
+        <!-- Content Area -->
+        <div class="main-content">
+            <h2>Recommend a Book</h2>
+            <form> <!-- Update action URL as needed -->
+                <table class="recommend-table">
+                    <tr>
+                        <th>Book Title</th>
+                        <td><input type="text" name="book_title" placeholder="Enter book title" required></td>
+                    </tr>
+                    <tr>
+                        <th>Description</th>
+                        <td><input type="text" name="description" placeholder="Enter description" required></td>
+                    </tr>
+                </table>
+                <div class="submit-button-container">
+                    <button type="submit" class="submit-button">Submit Recommendation</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="../sidebarNavigation.js"></script>
+    <script src="../recommend.js"></script>
+</body>
+</html>

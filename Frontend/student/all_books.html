@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Library Management System</title>
+    <style>
+        /* Basic Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        /* Body Styling */
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            background-color: #f4f4f4;
+        }
+
+        /* Header Styling */
+        .header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background-color: #fff;
+            padding: 10px 20px;
+            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+        }
+
+        .header h1 {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #333;
+        }
+
+        /* Profile Icon Styling */
+        .profile-icon {
+            width: 60px;
+            height: 60px;
+            background-image: url('https://www.shareicon.net/data/128x128/2017/06/22/887604_user_512x512.png');
+            background-size: cover;
+            background-position: center;
+            border-radius: 50%;
+        }
+
+        /* Container Styling */
+        .container {
+            display: flex;
+            flex: 1;
+            margin-top: 80px;
+        }
+
+        /* Sidebar Styling */
+        .sidebar {
+            width: 280px;
+            background-color: #333;
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+            padding: 20px;
+            height: 100vh;
+            position: fixed;
+            top: 80px;
+        }
+
+        .sidebar a {
+            display: flex;
+            align-items: center;
+            color: #fff;
+            text-decoration: none;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+
+        .sidebar a:hover {
+            background-color: #444;
+        }
+
+        .sidebar a span {
+            margin-right: 10px;
+            font-size: 24px;
+        }
+
+        /* Content Area Styling */
+        .content {
+            margin-left: 300px;
+            padding: 20px;
+            flex: 1;
+            overflow-y: auto;
+            height: calc(100vh - 80px);
+        }
+
+        /* Search Bar Styling */
+        .search-bar {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .search-bar input[type="text"] {
+            padding: 10px;
+            width: 300px;
+            margin-right: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        .search-bar button {
+            padding: 10px 20px;
+            border: none;
+            background-color: #007bff;
+            color: white;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .search-bar button:hover {
+            background-color: #0056b3;
+        }
+
+        /* Table Styling */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: center;
+        }
+
+        th {
+            background-color: #2c3e50;
+            color: white;
+        }
+
+        .availability {
+            width: 120px;
+        }
+
+        .available {
+            color: green;
+            font-weight: bold;
+        }
+
+        .not-available {
+            color: red;
+            font-weight: bold;
+        }
+
+        .button {
+            padding: 5px 10px;
+            text-decoration: none;
+            color: white;
+            background-color: #007bff;
+            border-radius: 3px;
+        }
+
+        .button:hover {
+            background-color: #0056b3;
+        }
+
+        /* Make the table scrollable */
+        .scrollable-table {
+            max-height: 400px;
+            overflow-y: auto;
+        }
+
+        /* No Results Message Styling */
+        .no-results {
+            color: red;
+            font-weight: bold;
+            text-align: center;
+            display: none;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: white;
+            padding: 20px;
+            border: 1px solid #ddd;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .modal-content {
+            position: relative;
+        }
+
+        .close-button {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 20px;
+            cursor: pointer;
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <div class="header">
+        <h1>Library Management System</h1>
+        <div class="profile-icon"></div>
+    </div>
+
+    <!-- Main Content Area -->
+    <div class="container">
+
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <a href="#"><span>🏠</span>Home</a>
+            <a href="#"><span>✉️</span>Messages</a>
+            <a href="#"><span>📚</span>All Books</a>
+            <a href="#"><span>👍</span>Recommend Books</a>
+            <a href="#"><span>📖</span>Currently Issued Books</a>
+            <a href="#"><span>➡️</span>Logout</a>
+        </div>
+
+        <!-- Content Area -->
+        <div class="content">
+            <!-- Search Bar -->
+            <div class="search-bar">
+                <input type="text" id="searchInput" placeholder="Enter Name/ID/ISBN of Book">
+                <button id="searchButton">Search</button>
+            </div>
+
+            <!-- No Results Message -->
+            <div id="noResultsMessage" class="no-results">No results found!</div>
+
+            <!-- Book Table -->
+            <div class="scrollable-table">
+                <table id="booksTable">
+                    <thead>
+                        <tr>
+                            <th>Book ID</th>
+                            <th>Book Name</th>
+                            <th>ISBN</th>
+                            <th>Availability</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Dynamic rows will be inserted here by JavaScript -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- Pop-up Modal for Book Details -->
+    <!-- Pop-up Modal for Book Details -->
+    <div id="bookDetailsModal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <span id="closeModal" class="close-button">×</span>
+            <h2>Book Details</h2>
+            
+            <!-- Display Book Details -->
+            <p><strong>Book Name:</strong> <span id="modalBookName"></span></p>
+            <p><strong>ISBN:</strong> <span id="modalISBN"></span></p>
+            <p><strong>Authors:</strong> <span id="modalAuthors"></span></p>
+            <p><strong>Publisher:</strong> <span id="modalPublisher"></span></p>
+            <p><strong>Tags:</strong> <span id="modalTags"></span></p>
+        </div>
+    </div>
+
+
+    
+
+    <script src="../allBooks.js"></script>
+    <script src="../sidebarNavigation.js"></script>
+</body>
+</html>

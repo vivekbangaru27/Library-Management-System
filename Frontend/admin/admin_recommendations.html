@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Library Management System</title>
+    <style>
+        /* Basic Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        /* Body Styling */
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            background-color: #f4f4f4;
+        }
+
+        /* Header Styling */
+        .header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background-color: #fff;
+            padding: 10px 20px;
+            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+        }
+
+        .header h1 {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #333;
+        }
+
+        /* Profile Icon Styling */
+        .profile-icon {
+            width: 60px;
+            height: 60px;
+            background-image: url('https://www.shareicon.net/data/128x128/2017/06/22/887604_user_512x512.png');
+            background-size: cover;
+            background-position: center;
+            border-radius: 50%;
+        }
+
+        /* Container Styling */
+        .container {
+            display: flex;
+            flex: 1;
+            margin-top: 80px;
+        }
+
+        /* Sidebar Styling */
+        .sidebar {
+            width: 280px;
+            background-color: #333;
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+            padding: 20px;
+            height: 100vh;
+            position: fixed;
+            top: 80px;
+        }
+
+        .sidebar a {
+            display: flex;
+            align-items: center;
+            color: #fff;
+            text-decoration: none;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+
+        .sidebar a:hover {
+            background-color: #444;
+        }
+
+        .sidebar a span {
+            margin-right: 10px;
+            font-size: 24px;
+        }
+
+        /* Content Area Styling */
+        .content {
+            margin-left: 300px;
+            padding: 20px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            overflow-y: auto;
+            height: calc(100vh - 80px);
+        }
+
+        /* Scrollable Table Styling */
+        .scrollable-table {
+            max-height: 400px; /* Set a fixed height */
+            overflow-y: auto; /* Enable vertical scrolling */
+            width: 80%;
+            margin-top: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: center;
+        }
+
+        th {
+            background-color: #2c3e50;
+            color: white;
+            position: sticky;
+            top: 0; /* Keep header fixed while scrolling */
+            z-index: 1;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        /* Approval Button Styling */
+        .approval-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .approve-btn, .decline-btn {
+            padding: 5px 10px;
+            border: none;
+            cursor: pointer;
+            font-size: 14px;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+
+        .approve-btn {
+            background-color: #28a745; /* Green */
+            color: white;
+        }
+
+        .approve-btn:hover {
+            background-color: #218838;
+        }
+
+        .decline-btn {
+            background-color: #dc3545; /* Red */
+            color: white;
+        }
+
+        .decline-btn:hover {
+            background-color: #c82333;
+        }
+
+        /* Add Book Button Styling */
+        .add-book-button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            text-align: center;
+        }
+
+        .add-book-button:hover {
+            background-color: #218838;
+        }
+
+        /* Row fade-out animation */
+        .fade-out {
+            animation: fadeOut 1s ease forwards;
+        }
+
+        @keyframes fadeOut {
+            0% {
+                opacity: 1;
+            }
+            100% {
+                opacity: 0;
+                transform: scale(0.9);
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <div class="header">
+        <h1>Library Management System</h1>
+        <div class="profile-icon"></div>
+    </div>
+
+    <!-- Main Content Area -->
+    <div class="container">
+
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <a href="#"><span>🏠</span>Home</a>
+            <a href="#"><span>📚</span>All Books</a>
+            <a href="#"><span>➕</span>Add Books</a>
+            <a href="#"><span>🔄</span>Requests</a>
+            <a href="#"><span>💡</span>Book Recommendations</a>
+            <a href="#"><span>➡️</span>Logout</a>
+        </div>        
+
+        <!-- Content Area -->
+        <div class="content">
+            <!-- Scrollable Book Table -->
+            <div class="scrollable-table">
+                <table>
+                    <tr>
+                        <th>Book Name</th>
+                        <th>Student</th>
+                        <th>Roll No</th>
+                        <th>Description</th>
+                        <th>Approval</th> <!-- New Approval Column -->
+                    </tr>
+                    <!-- Sample Data -->
+                    <tr>
+                        <td>Book1</td>
+                        <td>John Doe</td>
+                        <td>B160518CS</td>
+                        <td>Description of Book1</td>
+                        <td class="approval-buttons">
+                            <button class="approve-btn">Accept</button>
+                            <button class="decline-btn">Decline</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Book2</td>
+                        <td>Jane Smith</td>
+                        <td>B160518CS</td>
+                        <td>Description of Book2</td>
+                        <td class="approval-buttons">
+                            <button class="approve-btn">Accept</button>
+                            <button class="decline-btn">Decline</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Operating System</td>
+                        <td>Alex Johnson</td>
+                        <td>B160001CS</td>
+                        <td>An operating system (OS) is system software that manages computer hardware and software resources.</td>
+                        <td class="approval-buttons">
+                            <button class="approve-btn">Accept</button>
+                            <button class="decline-btn">Decline</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Networks</td>
+                        <td>Emily White</td>
+                        <td>B160099CS</td>
+                        <td>A computer network, or data network, is a telecommunications network that allows nodes to share resources.</td>
+                        <td class="approval-buttons">
+                            <button class="approve-btn">Accept</button>
+                            <button class="decline-btn">Decline</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>String Theory</td>
+                        <td>Michael Brown</td>
+                        <td>B160777CS</td>
+                        <td>String theory describes how these strings propagate through space and interact with each other.</td>
+                        <td class="approval-buttons">
+                            <button class="approve-btn">Accept</button>
+                            <button class="decline-btn">Decline</button>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            
+        </div>
+    </div>
+    <script src="../adminSidebarNavigation.js"></script>
+    <script src="../adminRecommendations.js"></script>
+
+</body>
+</html>

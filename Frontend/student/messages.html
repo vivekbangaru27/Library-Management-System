@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Library Management System</title>
+    <style>
+        /* Basic Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        /* Body Styling */
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            background-color: #f4f4f4;
+        }
+
+        /* Header Styling */
+        .header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background-color: #fff;
+            padding: 10px 20px;
+            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .header h1 {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #333;
+        }
+
+        /* Profile Icon Styling */
+        .profile-icon {
+            width: 60px;
+            height: 60px;
+            background-image: url('https://www.shareicon.net/data/128x128/2017/06/22/887604_user_512x512.png');
+            background-size: cover;
+            background-position: center;
+            border: 0px solid #ccc;
+        }
+
+        /* Container Styling */
+        .container {
+            display: flex;
+            flex: 1;
+        }
+
+        /* Sidebar Styling */
+        .sidebar {
+            width: 280px;
+            background-color: #333;
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+            padding: 20px;
+        }
+
+        .sidebar a {
+            display: flex;
+            align-items: center;
+            color: #fff;
+            text-decoration: none;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+
+        .sidebar a:hover {
+            background-color: #444;
+        }
+
+        .sidebar a span {
+            margin-right: 10px;
+            font-size: 24px;
+        }
+
+        /* Content Area Styling */
+        .content {
+            flex: 1;
+            padding: 20px;
+        }
+
+        /* Scrollable Table Container */
+        .table-container {
+            max-height: 300px; /* Set max height for scrollable area */
+            overflow-y: auto; /* Enable vertical scrolling */
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+            margin-top: 20px;
+        }
+
+        /* Table Styling */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #2c3e50;
+            color: #fff;
+            position: sticky;
+            top: 0; /* Keeps the header row visible while scrolling */
+            z-index: 1;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        tr:nth-child(odd) {
+            background-color: #f1f1f1;
+        }
+
+        /* Fade-out Animation */
+        @keyframes fadeOut {
+            0% {
+                opacity: 1;
+            }
+            100% {
+                opacity: 0;
+            }
+        }
+
+        .fade-out {
+            animation: fadeOut 0.5s forwards; /* Apply fade-out animation */
+        }
+
+        /* Delete Button Styling */
+        .delete-btn {
+            background: none;
+            border: none;
+            color: red;
+            font-size: 20px;
+            cursor: pointer;
+        }
+
+        .delete-btn:hover {
+            color: darkred;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <div class="header">
+        <h1>Library Management System</h1>
+        <div class="profile-icon"></div>
+    </div>
+
+    <!-- Main Content Area -->
+    <div class="container">
+        
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <a href="#"><span>🏠</span>Home</a>
+            <a href="#"><span>✉️</span>Messages</a>
+            <a href="#"><span>📚</span>All Books</a>
+            <a href="#"><span>👍</span>Recommend Books</a>
+            <a href="#"><span>📖</span>Currently Issued Books</a>
+            <a href="#"><span>➡️</span>Logout</a>
+        </div>
+
+        <!-- Content Area -->
+        <div class="content">
+            <!-- Scrollable Table Container -->
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Message</th>
+                            <th>Date</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Your request for return of BookId: 3 has been accepted</td>
+                            <td>2018-10-25</td>
+                            <td><button class="delete-btn">🗑️</button></td>
+                        </tr>
+                        <tr>
+                            <td>Your request for renewal of BookId: 3 has been accepted</td>
+                            <td>2018-10-25</td>
+                            <td><button class="delete-btn">🗑️</button></td>
+                        </tr>
+                        <tr>
+                            <td>Your request for issue of BookId: 15 has been accepted</td>
+                            <td>2018-10-25</td>
+                            <td><button class="delete-btn">🗑️</button></td>
+                        </tr>
+                        <tr>
+                            <td>Your request for issue of BookId: 7 has been rejected</td>
+                            <td>2018-10-25</td>
+                            <td><button class="delete-btn">🗑️</button></td>
+                        </tr>
+                        <tr>
+                            <td>Your request for issue of BookId: 2 has been rejected</td>
+                            <td>2018-10-16</td>
+                            <td><button class="delete-btn">🗑️</button></td>
+                        </tr>
+                        <tr>
+                            <td>Your request for BookId: 3 has been accepted</td>
+                            <td>2018-10-16</td>
+                            <td><button class="delete-btn">🗑️</button></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Adding event listeners to the delete buttons
+        document.querySelectorAll('.delete-btn').forEach(button => {
+            button.addEventListener('click', (e) => {
+                const row = e.target.closest('tr'); // Get the row containing the delete button
+                row.classList.add('fade-out'); // Trigger the fade-out animation
+                // Remove the row after the animation completes (0.5s duration)
+                setTimeout(() => {
+                    row.remove();
+                }, 500); // Match the animation duration (500ms)
+            });
+        });
+    </script>
+    <script src="../sidebarNavigation.js"></script>
+</body>
+</html>

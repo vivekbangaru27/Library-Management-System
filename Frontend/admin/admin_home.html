@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Library Management System</title>
+    <style>
+        /* Basic Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        /* Body Styling */
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            background-color: #f4f4f4;
+        }
+
+        /* Header Styling */
+        .header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background-color: #fff;
+            padding: 10px 20px;
+            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+        }
+
+        .header h1 {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #333;
+        }
+
+        /* Profile Icon Styling */
+        .profile-icon {
+            width: 60px;
+            height: 60px;
+            background-image: url('https://www.shareicon.net/data/128x128/2017/06/22/887604_user_512x512.png');
+            background-size: cover;
+            background-position: center;
+            border-radius: 50%;
+        }
+
+        /* Container Styling */
+        .container {
+            display: flex;
+            flex: 1;
+            margin-top: 80px;
+        }
+
+        /* Sidebar Styling */
+        .sidebar {
+            width: 280px;
+            background-color: #333;
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+            padding: 20px;
+            height: 100vh;
+            position: fixed;
+            top: 80px;
+        }
+
+        .sidebar a {
+            display: flex;
+            align-items: center;
+            color: #fff;
+            text-decoration: none;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+
+        .sidebar a:hover {
+            background-color: #444;
+        }
+
+        .sidebar a span {
+            margin-right: 10px;
+            font-size: 24px;
+        }
+
+        /* Content Area Styling */
+        .content {
+            margin-left: 300px;
+            padding: 20px;
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: calc(100vh - 80px);
+        }
+
+        /* Profile Card Styling */
+        .profile-card {
+            max-width: 400px;
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+            color: #333;
+        }
+
+        .profile-image-section {
+            background-color: #4a90e2;
+            padding: 20px;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+            text-align: center;
+        }
+
+        .profile-image {
+            width: 120px;
+            height: 120px;
+            margin: 0 auto;
+            border-radius: 50%;
+            overflow: hidden;
+        }
+
+        .profile-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .profile-content {
+            padding: 20px;
+            background-color: #d1d8e0;
+            border-bottom-left-radius: 10px;
+            border-bottom-right-radius: 10px;
+            text-align: left;
+        }
+
+        .profile-content h2 {
+            margin-bottom: 10px;
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #333;
+            text-align: center; /* Center-align the name */
+        }
+
+        .profile-content p {
+            font-size: 1rem;
+            margin: 8px 0;
+            line-height: 1.6;
+        }
+
+        .profile-content p strong {
+            display: inline-block;
+            width: 120px; /* Reduced width for labels */
+            font-weight: 600;
+        }
+
+        .edit-button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #1e90ff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            font-size: 1rem;
+            display: block;
+            width: 100%;
+            text-align: center;
+        }
+
+        .edit-button:hover {
+            background-color: #4682b4;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <div class="header">
+        <h1>Library Management System</h1>
+        <div class="profile-icon"></div>
+    </div>
+
+    <!-- Main Content Area -->
+    <div class="container">
+
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <a href="#"><span>🏠</span>Home</a>
+            <a href="#"><span>📚</span>All Books</a>
+            <a href="#"><span>➕</span>Add Books</a>
+            <a href="#"><span>🔄</span>Requests</a>
+            <a href="#"><span>💡</span>Book Recommendations</a>
+            <a href="#"><span>➡️</span>Logout</a>
+        </div>        
+
+        <!-- Content Area -->
+        <div class="content">
+            <!-- Profile Card -->
+            <div class="profile-card">
+                <!-- Profile Image Section -->
+                <div class="profile-image-section">
+                    <div class="profile-image">
+                        <img src="https://www.shareicon.net/data/128x128/2017/06/22/887604_user_512x512.png" alt="Profile Image">
+                    </div>
+                </div>
+                
+                <!-- Profile Content Section -->
+                <div class="profile-content">
+                    <h2>ADMIN_45</h2>
+                    <p><strong>Email ID:</strong> admin3@nitc.ac.in</p>
+                    <p><strong>Mobile number:</strong> 7203201357</p>
+                    <button class="edit-button">Edit Details</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="../adminSidebarNavigation.js"></script>
+
+</body>
+</html>
