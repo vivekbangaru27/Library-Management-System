@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Library Member Login</title>
+    <style>
+        /* Basic Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        /* Background Styling */
+        body {
+            background: url('https://cdn-media-2.freecodecamp.org/w1280/5f9c9999740569d1a4ca20a6.jpg') no-repeat center center fixed; /* Replace with a real library image URL */
+            background-size: cover;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            color: #fff;
+        }
+
+        /* Overlay for Dark Effect */
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6); /* Dark overlay */
+        }
+
+        /* Main Container - Increased Width and Reduced Padding */
+        .container {
+            position: relative;
+            display: flex;
+            width: 700px; /* Increased width */
+            max-width: 90%;
+            background: rgba(0, 0, 0, 0.7); /* Dark form background */
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+            padding: 1rem; /* Reduced padding */
+        }
+
+        /* Sign In and Sign Up Sections */
+        .form-section {
+            flex: 1;
+            padding: 1rem; /* Reduced padding */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            border-right: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        /* Last Section Remove Border */
+        .form-section:last-child {
+            border-right: none;
+        }
+
+        /* Section Titles */
+        .form-section h2 {
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+            color: #fff;
+        }
+
+        /* Input Fields */
+        .input-field {
+            width: 100%;
+            padding: 8px; /* Reduced padding */
+            margin: 0.5rem 0;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 4px;
+            background: #000; /* Set background to black */
+            color: #fff;
+        }
+
+        /* Input Placeholder */
+        .input-field::placeholder {
+            color: #bbb;
+        }
+
+        /* Buttons */
+        .button {
+            width: 100%;
+            padding: 8px; /* Reduced padding */
+            border: 1px solid #fff;
+            background: transparent;
+            color: #fff;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+        }
+
+        .button:hover {
+            background-color: #0080ff;
+        }
+
+        /* Footer Text */
+        .form-footer {
+            font-size: 0.85rem;
+            color: #bbb;
+            text-align: center;
+            margin-top: 1rem;
+        }
+
+        .form-footer a {
+            color: #0080ff;
+            text-decoration: none;
+        }
+
+        .form-footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Heading - Title Styling */
+        .page-title {
+            position: absolute;
+            top: 20px;
+            text-align: center;
+            width: 100%;
+            color: #fff;
+            font-size: 2.5rem;
+            font-family: 'Georgia', serif; /* Different font for the title */
+            font-weight: bold;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Shadow for prominence */
+        }
+
+        /* Footer */
+        .footer {
+            position: absolute;
+            bottom: 20px;
+            text-align: center;
+            width: 100%;
+            color: #aaa;
+            font-size: 0.85rem;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="overlay"></div>
+    
+    <!-- Page Title -->
+    <div class="page-title">LIBRARY MEMBER LOGIN</div>
+    
+    <!-- Main Form Container -->
+    <div class="container">
+        
+        <!-- Sign In Section -->
+        <div class="form-section">
+            <h2>Sign In</h2>
+            <input type="text" class="input-field" placeholder="Roll No" required>
+            <input type="password" class="input-field" placeholder="Password" required>
+            <button class="button">Sign In</button>
+        </div>
+        
+        <!-- Sign Up Section -->
+        <div class="form-section">
+            <h2>Sign Up</h2>
+            <input type="text" class="input-field" placeholder="Name" required>
+            <input type="email" class="input-field" placeholder="Email" required>
+            <input type="password" class="input-field" placeholder="Password" required>
+            <input type="text" class="input-field" placeholder="Phone Number" required>
+            <input type="text" class="input-field" placeholder="Roll Number" required>
+
+            <!-- Department Dropdown with Black Background -->
+            <select class="input-field" required>
+                <option value="" disabled selected>Department</option>
+                <option value="cs">Computer Science</option>
+                <option value="cs">Electronics and Communication</option>
+                <option value="ee">Electrical Engineering</option>
+                <option value="me">Mechanical Engineering</option>
+                <option value="ce">Civil Engineering</option>
+                <option value="bio">Biotechnology</option>
+            </select>
+
+            <button class="button">Sign Up</button>
+            <div class="form-footer">
+                By creating an account, you agree to our <a href="#">Terms</a>
+            </div>
+        </div>
+        
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">&copy; Crafted overnight with relentless focus by Pranav, Abhishek, and Mayank. Built different. 🗿🗿</div>
+
+    <script src="libraryMemberAuth.js"></script>
+
+</body>
+</html>

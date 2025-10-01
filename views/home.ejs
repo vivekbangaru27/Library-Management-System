@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Library Management System</title>
+    <style>
+        /* Basic Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        /* Body Styling */
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            background-color: #f4f4f4;
+        }
+
+        /* Header Styling */
+        .header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background-color: #fff;
+            padding: 10px 20px;
+            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .header h1 {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #333;
+        }
+
+        /* Profile Icon Styling */
+        .profile-icon {
+            width: 60px;
+            height: 60px;
+            background-image: url('https://www.shareicon.net/data/128x128/2017/06/22/887604_user_512x512.png');
+            background-size: cover;
+            background-position: center;
+            border-radius: 50%;
+        }
+
+        /* Container Styling */
+        .container {
+            display: flex;
+            flex: 1;
+        }
+
+        /* Sidebar Styling */
+        .sidebar {
+            width: 280px;
+            background-color: #333;
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+            padding: 20px;
+        }
+
+        .sidebar a {
+            display: flex;
+            align-items: center;
+            color: #fff;
+            text-decoration: none;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+
+        .sidebar a:hover {
+            background-color: #444;
+        }
+
+        .sidebar a span {
+            margin-right: 10px;
+            font-size: 24px;
+        }
+
+        /* Content Area Styling */
+        .content {
+            flex: 1;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Profile Card Styling */
+        .profile-card {
+            width: 400px;
+            background-color: #d1d8e0;
+            border-radius: 10px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+            color: #333;
+            overflow: hidden;
+        }
+
+        .profile-image-section {
+            background-color: #4a90e2; /* Light blue background for profile image section */
+            padding: 20px;
+            text-align: center;
+        }
+
+        .profile-image {
+            width: 120px;
+            height: 120px;
+            margin: 0 auto;
+            border-radius: 50%;
+            overflow: hidden;
+        }
+
+        .profile-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .profile-content {
+            padding: 20px;
+            background-color: #ffffff; /* White background for profile content */
+            text-align: left;
+        }
+
+        .profile-content h2 {
+            margin-bottom: 10px;
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #333;
+            text-align: center;
+        }
+
+        .profile-content p {
+            font-size: 1rem;
+            margin: 12px 0;
+        }
+
+        .profile-content p strong {
+            display: inline-block;
+            width: 130px; /* Aligns labels */
+        }
+
+        .edit-button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #1e90ff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            font-size: 1rem;
+            width: 100%;
+            text-align: center;
+        }
+
+        .edit-button:hover {
+            background-color: #4682b4;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <div class="header">
+        <h1>Library Management System</h1>
+        <div class="profile-icon"></div>
+    </div>
+
+    <!-- Main Content Area -->
+    <div class="container">
+        
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <a href="#"><span>🏠</span>Home</a>
+            <a href="#"><span>✉️</span>Messages</a>
+            <a href="#"><span>📚</span>All Books</a>
+            <a href="#"><span>👍</span>Recommend Books</a>
+            <a href="#"><span>📖</span>Currently Issued Books</a>
+            <a href="#"><span>➡️</span>Logout</a>
+        </div>
+
+        <!-- Content Area -->
+        <div class="content">
+            <!-- Profile Card -->
+            <div class="profile-card">
+                <!-- Profile Image Section -->
+                <div class="profile-image-section">
+                    <div class="profile-image">
+                        <img src="https://www.shareicon.net/data/128x128/2017/06/22/887604_user_512x512.png" alt="Profile Image">
+                    </div>
+                </div>
+                
+                <!-- Profile Content Section -->
+                <div class="profile-content">
+                    <h2>KENIL</h2>
+                    <p><strong>Email ID:</strong> kenilshah08198@gmail.com</p>
+                    <p><strong>Roll No:</strong> B160632CS</p>
+                    <p><strong>Mobile number:</strong> 9892506094</p>
+                    <p><strong>Department:</strong> Computer Science</p>
+                    <button class="edit-button">Edit Details</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="sidebarNavigation.js"></script>
+</body>
+</html>
